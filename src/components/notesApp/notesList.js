@@ -1,4 +1,5 @@
 import React from "react";
+import { Note } from "./noteSingle";
 
 class NotesList extends React.Component {
   render() {
@@ -24,18 +25,4 @@ class NotesList extends React.Component {
   }
 }
 
-class Note extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.noteProp.done ? (
-          <del>{this.props.noteProp.title}</del>
-        ) : (
-          this.props.noteProp.title
-        )}
-      </div>
-    );
-  }
-}
-
-export { NotesList };
+export {NotesList}

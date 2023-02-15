@@ -1,6 +1,6 @@
 import React from "react";
-import "./notes.css";
-import { NotesList } from "./noteListAndNoteSingle";
+import "./notesApp.css";
+import { NotesList } from "./notesList";
 
 class TodoApp extends React.Component {
   state = {

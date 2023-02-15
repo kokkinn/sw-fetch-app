@@ -1,5 +1,5 @@
 import React from "react";
-import "./gridHW.css";
+import "./main.css";
 
 class Header extends React.Component {
   render() {

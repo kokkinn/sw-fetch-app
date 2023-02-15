@@ -1,7 +1,7 @@
 import './App.css';
 import React from "react";
-import {Header, SideNav, MainContainer} from "./components/base-components";
-import {TodoApp} from "./components/notes-app/notes-app";
+import {Header, SideNav, MainContainer} from "./components/main";
+import {TodoApp} from "./components/notesApp/notesApp";
 
 export class App extends React.Component {
     render() {
