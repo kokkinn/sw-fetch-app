@@ -1,19 +1,15 @@
-import './App.css';
-import React from "react";
-import {Header, SideNav, MainContainer} from "./components/main";
-import {TodoApp} from "./components/notesApp/notesApp";
+import { PhoneBook } from "./components/PhoneBook/PhoneBook";
+import { Component } from "react";
+import "./App.css";
 
-export class App extends React.Component {
-    render() {
-        return (<>
-                <div className='grid-container'>
-                    <Header/>
-                    <MainContainer/>
-                    <SideNav/>
-                </div>
-                <div className='todo-block'><TodoApp/></div>
-            </>
-        )
-    }
+class App extends Component {
+  render() {
+    return (
+      // navbar
+      // sidenav
+      <PhoneBook />
+    );
+  }
 }
 
+export { App };
