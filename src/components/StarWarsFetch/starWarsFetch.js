@@ -1,109 +1,96 @@
-import { useEffect, useRef, useState } from "react";
+import { Component } from "react";
 import { ItemsList } from "./itemsList";
 import { TypeButtons } from "./typeButtons";
 import { ItemCardFactory } from "./itemCard";
 import uuid from "react-uuid";
 import "./starWarsFetch.css";
 
-export function StarWarsFetchApp() {
-  const [showType, setShowType] = useState("people");
-  const [apiItemsList, setApiItemsList] = useState([]);
-  const [apiErrorBool, setApiErrorBool] = useState(false);
-  const [curItem, setCurItem] = useState("");
-  const refListCurItem = useRef(null);
-  const refCard = useRef(null);
-  const refActiveButton = useRef(null);
+export class StarWarsFetchApp extends Component {
+  state = {
+    apiError: false,
+    showType: "people",
+    apiItemsList: [],
+    curItem: "",
+  };
 
-  useEffect(() => {
-    const handler = (ev) => {
-      if (
-        refListCurItem.current != null &&
-        refCard.current != null &&
-        !refListCurItem.current.contains(ev.target) &&
-        !refCard.current.contains(ev.target) &&
-        ev.target.tagName !== "BUTTON"
-      ) {
-        refListCurItem.current.classList.remove("li-el-active");
-        setCurItem("");
-      }
-    };
-    document.addEventListener("click", handler);
-  });
-
-  useEffect(() => {
-    setApiErrorBool(false);
+  componentDidMount() {
+    this.setState({ ...this.state, apiItemsList: [], curItem: "" });
+    this.setState({ ...this.state, apiError: false });
     let dlist = [];
     const getData = async () => {
       let resp = null;
       for (let i = 4; i < 13; i++) {
-        resp = await fetch(`https://swapi.dev/api/${showType}/${i}/`);
+        resp = await fetch(
+          `https://swapi.dev/api/${this.state.showType}/${i}/`
+        );
         if (resp.ok) {
           let data = await resp.json();
           data.uuid = uuid();
           dlist.push(data);
+          this.setState({ ...this.state, apiError: false });
         } else {
-          setApiErrorBool(apiErrorBool || true);
+          this.setState({ ...this.state, apiError: true });
         }
       }
     };
 
-    getData().then(() => setApiItemsList(dlist));
-    return () => {
-      setCurItem("");
-      setApiItemsList([]);
-    };
-  }, [showType]);
+    getData().then(() => this.setState({ ...this.state, apiItemsList: dlist }));
+  }
 
-  const typeButtonClickHandler = (ev, buttonType) => {
-    if (refActiveButton.current != null) {
-      refActiveButton.current.classList.remove("button-active");
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.state.showType !== prevState.showType) {
+      this.componentDidMount();
     }
-    ev.target.classList.add("button-active");
-    refActiveButton.current = ev.target;
-    setShowType(buttonType);
+  }
+
+  componentWillUnmount() {
+    this.setState({ ...this.state, apiItemsList: [], curItem: "" });
+  }
+
+  typeButtonClickHandler = (ev, buttonType) => {
+    this.setState({
+      ...this.state,
+      apiItemsList: [],
+      curItem: "",
+      showType: buttonType,
+    });
   };
 
-  const itemClickHandler = (ev, uuid) => {
-    if (refListCurItem.current != null) {
-      refListCurItem.current.classList.remove("li-el-active");
-    }
-    ev.target.classList.add("li-el-active");
-    refListCurItem.current = ev.target;
-    for (let item of apiItemsList) {
+  const;
+  itemClickHandler = (ev, uuid) => {
+    for (let item of this.state.apiItemsList) {
       if (item.uuid === uuid) {
-        setCurItem(item);
+        this.setState({ ...this.state, curItem: item });
       }
     }
   };
 
-  return (
-    <div className="fetch-app">
-      <h1 className="sf-title">Star Wars API Interface</h1>
-      <TypeButtons
-        clickHandler={typeButtonClickHandler}
-        refActiveButton={refActiveButton}
-      />
-      <div className="sf-list-and-card">
-        <ItemsList
-          reff={refListCurItem}
-          apiItemsList={apiItemsList}
-          itemClickHandler={itemClickHandler}
-          apiError={apiErrorBool}
-        />
-        <div className="sf-card-outer">
-          <ItemCardFactory
-            refCard={refCard}
-            type={showType}
-            data={curItem}
-            noList={apiItemsList.length === 0}
-          />
-        </div>
+  render() {
+    return (
+      <div className="fetch-app">
+        <h1 className="sf-title">Star Wars API Interface</h1>
+        <TypeButtons clickHandler={this.typeButtonClickHandler} />
+
+        {this.state.apiItemsList.length === 0 ? (
+          <div className="loader-outer">
+            <span className="loader"></span>
+          </div>
+        ) : (
+          <div className="sf-list-and-card">
+            <ItemsList
+              apiItemsList={this.state.apiItemsList}
+              itemClickHandler={this.itemClickHandler}
+            />
+            <div className="sf-card-outer">
+              <ItemCardFactory
+                type={this.state.showType}
+                data={this.state.curItem}
+                noList={this.state.apiItemsList.length === 0}
+              />
+            </div>
+          </div>
+        )}
       </div>
-      {apiItemsList.length === 0 ? (
-        <div className="loader-outer">
-          <span className="loader"></span>
-        </div>
-      ) : null}
-    </div>
-  );
+    );
+  }
 }

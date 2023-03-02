@@ -1,26 +1,30 @@
-export function ItemsList({ apiItemsList, itemClickHandler, apiError, reff }) {
-  let filteredArray = [];
-  for (let item of apiItemsList) {
-    filteredArray.push(
-      <div
-        onClick={(event) => itemClickHandler(event, item.uuid)}
-        key={item.uuid}
-      >
-        {item.name}
-      </div>
-    );
-  }
-  if (apiItemsList.length !== 0) {
-    return (
-      <div className="sf-list-outer" ref={reff}>
-        <div className="sf-list">{filteredArray}</div>
-        <div className="error-div">
-          {apiError
-            ? "Some of the source information cannot be loaded :("
-            : null}
+import { Component } from "react";
+
+export class ItemsList extends Component {
+  render() {
+    let filteredArray = [];
+    for (let item of this.props.apiItemsList) {
+      filteredArray.push(
+        <div
+          onClick={(event) => this.props.itemClickHandler(event, item.uuid)}
+          key={item.uuid}
+        >
+          {item.name}
         </div>
-      </div>
-    );
+      );
+    }
+    if (this.props.apiItemsList.length !== 0) {
+      return (
+        <div className="sf-list-outer">
+          <div className="sf-list">{filteredArray}</div>
+          <div className="error-div">
+            {this.props.apiError
+              ? "Some of the source information cannot be loaded :("
+              : null}
+          </div>
+        </div>
+      );
+    }
+    return null;
   }
-  return null;
 }

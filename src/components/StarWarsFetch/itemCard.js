@@ -1,45 +1,83 @@
-export function ItemCardFactory({ type, data, noList, refCard }) {
-  const EMPTY_DATA = "---";
-  if (!noList) {
-    const variants = {
-      people: (
-        <div className="item-card" ref={refCard}>
-          <div className="item-card-large-text">
-            {data.name ? data.name : "---"}
+import { Component } from "react";
+
+export class ItemCardFactory extends Component {
+  EMPTY_DATA = "---";
+
+  render() {
+    if (!this.props.noList && this.props.data !== undefined) {
+      const variants = {
+        people: (
+          <div className="item-card">
+            <div className="item-card-large-text">
+              {this.props.data.name ? this.props.data.name : "---"}
+            </div>
+            <div>
+              Gender:{" "}
+              {this.props.data.gender
+                ? this.props.data.gender
+                : this.EMPTY_DATA}
+            </div>
+            <div>
+              Birthday:{" "}
+              {this.props.data.birth_year
+                ? this.props.data.birth_year
+                : this.EMPTY_DATA}
+            </div>
+            <div>
+              Eye Color:{" "}
+              {this.props.data.eye_color
+                ? this.props.data.eye_color
+                : this.EMPTY_DATA}
+            </div>
           </div>
-          <div>Gender: {data.gender ? data.gender : EMPTY_DATA}</div>
-          <div>Birthday: {data.birth_year ? data.birth_year : EMPTY_DATA}</div>
-          <div>Eye Color: {data.eye_color ? data.eye_color : EMPTY_DATA}</div>
-        </div>
-      ),
-      starships: (
-        <div className="item-card" ref={refCard}>
-          <div className="item-card-large-text">
-            {data.name ? data.name : EMPTY_DATA}
+        ),
+        starships: (
+          <div className="item-card">
+            <div className="item-card-large-text">
+              {this.props.data.name ? this.props.data.name : this.EMPTY_DATA}
+            </div>
+            <div>
+              Model:{" "}
+              {this.props.data.model ? this.props.data.model : this.EMPTY_DATA}
+            </div>
+            <div>
+              Crew: {this.props.data.crew ? this.props.data.crew : "---"}
+            </div>
+            <div>
+              Passengers:{" "}
+              {this.props.data.passengers
+                ? this.props.data.passengers
+                : this.EMPTY_DATA}
+            </div>
           </div>
-          <div>Model: {data.model ? data.model : EMPTY_DATA}</div>
-          <div>Crew: {data.crew ? data.crew : "---"}</div>
-          <div>
-            Passengers: {data.passengers ? data.passengers : EMPTY_DATA}
+        ),
+        planets: (
+          <div className="item-card">
+            <div className="item-card-large-text">
+              {this.props.data.name ? this.props.data.name : this.EMPTY_DATA}
+            </div>
+            <div>
+              Climate:{" "}
+              {this.props.data.climate
+                ? this.props.data.climate
+                : this.EMPTY_DATA}
+            </div>
+            <div>
+              Population:{" "}
+              {this.props.data.population
+                ? this.props.data.population
+                : this.EMPTY_DATA}
+            </div>
+            <div>
+              Gravity:{" "}
+              {this.props.data.gravity
+                ? this.props.data.gravity
+                : this.EMPTY_DATA}
+            </div>
           </div>
-        </div>
-      ),
-      planets: (
-        <div className="item-card" ref={refCard}>
-          <div className="item-card-large-text">
-            {data.name ? data.name : EMPTY_DATA}
-          </div>
-          <div>Climate: {data.climate ? data.climate : EMPTY_DATA}</div>
-          <div>
-            Population: {data.population ? data.population : EMPTY_DATA}
-          </div>
-          <div>Gravity: {data.gravity ? data.gravity : EMPTY_DATA}</div>
-        </div>
-      ),
-    };
-    return variants[type];
+        ),
+      };
+      return variants[this.props.type];
+    }
   }
-  // if (noList) {
-  //   return null
-  // }
 }
