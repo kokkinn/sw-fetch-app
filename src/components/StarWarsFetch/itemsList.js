@@ -11,8 +11,6 @@ export function ItemsList({ apiItemsList, itemClickHandler, apiError, reff }) {
     );
   }
   if (apiItemsList.length !== 0) {
-    console.log("LIST LEN IS NOT 0");
-    console.log(apiItemsList);
     return (
       <div className="sf-list-outer" ref={reff}>
         <div className="sf-list">{filteredArray}</div>

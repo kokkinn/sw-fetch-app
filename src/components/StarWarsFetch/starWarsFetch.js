@@ -17,6 +17,8 @@ export function StarWarsFetchApp() {
   useEffect(() => {
     const handler = (ev) => {
       if (
+        refListCurItem.current != null &&
+        refCard.current != null &&
         !refListCurItem.current.contains(ev.target) &&
         !refCard.current.contains(ev.target) &&
         ev.target.tagName !== "BUTTON"

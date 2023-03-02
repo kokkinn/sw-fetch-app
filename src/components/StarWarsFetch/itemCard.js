@@ -1,7 +1,6 @@
 export function ItemCardFactory({ type, data, noList, refCard }) {
   const EMPTY_DATA = "---";
   if (!noList) {
-    console.log("CArd has data", data);
     const variants = {
       people: (
         <div className="item-card" ref={refCard}>
