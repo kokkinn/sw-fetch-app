@@ -1,0 +1,148 @@
+.fetch-app {
+  background-color: #4e4e5a;
+  padding: 20px;
+  border-radius: 40px;
+  font-size: 20pt;
+}
+
+.sf-list-and-card {
+  display: flex;
+  gap: 20px;
+}
+
+.sf-title {
+  font-size: 50px;
+  color: white;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 25px #9feaea;
+  transition: transform 0.5s linear, text-shadow 1s;
+  transform: scale(1);
+  cursor: pointer;
+}
+
+.sf-title:hover {
+  text-shadow: 0 0 25px #00d9ff;
+  z-index: 1;
+  transform: scale(1.05);
+}
+
+.item-card {
+  border-radius: 30px;
+  background-color: rgb(54, 55, 68);
+  display: flex;
+  flex-direction: column;
+  color: aliceblue;
+  width: 80%;
+  height: auto;
+  border: #9feaea solid;
+  animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
+}
+
+.error-div {
+  color: #9feaea;
+  animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+@keyframes keyFrameScaleUp {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.item-card div {
+  padding: 25px;
+}
+
+.item-card div:not(:nth-child(1)) {
+  border-top: rgba(255, 255, 255, 0.32) solid 1px;
+}
+
+.item-card-large-text {
+  font-size: 45px;
+}
+.item-card-regular-text {
+  font-size: 22px;
+}
+
+.sf-type-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.sf-list {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.sf-list,
+.sf-list div {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s;
+}
+
+.sf-list div:hover {
+  background-color: #737377;
+}
+
+.sf-list div {
+  /*border-top: black solid 2px;*/
+  /*border: black solid 1px;*/
+  padding: 10px;
+}
+.sf-list-outer {
+  width: 50%;
+  /*display: flex;*/
+  /*justify-content: center;*/
+}
+
+.sf-card-outer {
+  width: 50%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-size: 25px;
+  height: 40px;
+  width: 170px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: #ff3d00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-outer {
+  display: flex;
+  justify-content: center;
+}
+
+.li-el-active {
+  background-color: rgb(39, 40, 47) !important;
+}
