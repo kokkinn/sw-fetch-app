@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { ItemsList } from "./itemsList";
 import { TypeButtons } from "./typeButtons";
 import { ItemCardFactory } from "./itemCard";
-import uuid from "react-uuid";
-import "./starWarsFetch.css";
+import "./swApiInterface.css";
+import { getData } from "./utils/api";
 
-export function StarWarsFetchApp() {
+function SwApiInterfaceApp() {
   const [showType, setShowType] = useState("people");
   const [apiItemsList, setApiItemsList] = useState([]);
   const [apiErrorBool, setApiErrorBool] = useState(false);
@@ -14,6 +14,19 @@ export function StarWarsFetchApp() {
   const refCard = useRef(null);
   const refActiveButton = useRef(null);
 
+  // api
+  useEffect(() => {
+    setApiErrorBool(false);
+    getData(showType, () => {
+      setApiErrorBool(apiErrorBool || true);
+    }).then((jsonData) => setApiItemsList(jsonData));
+    return () => {
+      setCurItem("");
+      setApiItemsList([]);
+    };
+  }, [showType]);
+
+  // close card when outside click
   useEffect(() => {
     const handler = (ev) => {
       if (
@@ -30,32 +43,8 @@ export function StarWarsFetchApp() {
     document.addEventListener("click", handler);
   });
 
-  useEffect(() => {
-    setApiErrorBool(false);
-    let dlist = [];
-    const getData = async () => {
-      let resp = null;
-      for (let i = 4; i < 13; i++) {
-        resp = await fetch(`https://swapi.dev/api/${showType}/${i}/`);
-        if (resp.ok) {
-          let data = await resp.json();
-          data.uuid = uuid();
-          dlist.push(data);
-        } else {
-          setApiErrorBool(apiErrorBool || true);
-        }
-      }
-    };
-
-    getData().then(() => setApiItemsList(dlist));
-    return () => {
-      setCurItem("");
-      setApiItemsList([]);
-    };
-  }, [showType]);
-
   const typeButtonClickHandler = (ev, buttonType) => {
-    if (refActiveButton.current != null) {
+    if (refActiveButton.current !== null) {
       refActiveButton.current.classList.remove("button-active");
     }
     ev.target.classList.add("button-active");
@@ -107,3 +96,5 @@ export function StarWarsFetchApp() {
     </div>
   );
 }
+
+export { SwApiInterfaceApp };

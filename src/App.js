@@ -1,7 +1,7 @@
-import { PhoneBook } from "./components/PhoneBook/PhoneBook";
+// import { PhoneBook } from "./components/PhoneBook/PhoneBook";
 import { Component } from "react";
 import "./App.css";
-import { StarWarsFetchApp } from "./components/StarWarsFetch/starWarsFetch";
+import { SwApiInterfaceApp } from "./components/SwApi/swApiInterface";
 
 class App extends Component {
   render() {
@@ -10,7 +10,7 @@ class App extends Component {
       // sidenav
       <div>
         {/*<PhoneBook />*/}
-        <StarWarsFetchApp />
+        <SwApiInterfaceApp />
       </div>
     );
   }
