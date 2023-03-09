@@ -1,48 +1,82 @@
+:root {
+    --global-font-size: 35px;
+    --global-dt-text-color: #f0ffffff;
+    --global-lt-text-color: #000000;
+    --global-lt-backgound-color: #F5DEB3FF;
+    --global-lt-button-backgound-color: #eed19a;
+    --global-dt-button-backgound-color: #363744ff;
+    --global-dt-button-active-background-color: #65cebb;
+    --global-lt-button-active-background-color: #46443e;
+    --global-lt-button-active-text-color: #dcd551;
+    --global-dt-button-active-text-color: #000000;
+    --global-dt-border: #9feaea solid 1px;
+    --global-lt-border: #d3ad68 solid 1px;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  width: 100%;
-  font-size: 35px;
-  padding: 20px;
-  background-color: rgb(39, 40, 47);
+    width: 100%;
+    font-size: var(--global-font-size);
+    padding: 20px;
+    background-color: rgb(39, 40, 47);
 }
 
-input {
-  height: 30px;
-  width: 150px;
-  font-size: 20px;
-  background-color: azure;
-  border: #9feaea solid 1px;
-  transition: background-color 0.9s, color 0.9s;
+/*input {*/
+/*    height: 30px;*/
+/*    width: 150px;*/
+/*    font-size: calc(var(--global-font-size) - 15);*/
+/*    background-color: azure;*/
+/*    border: #9feaea solid 1px;*/
+/*    transition: background-color 0.9s, color 0.9s;*/
+/*}*/
+
+/*input:hover {*/
+/*    background-color: white;*/
+/*    color: #65cebb;*/
+/*}*/
+
+.button {
+    height: 40px;
+    width: 150px;
+    font-size: calc(var(--global-font-size) - 10);
+    border-radius: 15px;
+    transition: background-color 0.7s, color 0.7s;
 }
 
-input:hover {
-  background-color: white;
-  color: #65cebb;
+.button-dt {
+    background-color: var(--global-dt-button-backgound-color);
+    color: var(--global-dt-text-color);
+    border: var(--global-dt-border);
 }
 
-button {
-  height: 30px;
-  width: 150px;
-  font-size: 20px;
-  background-color: rgb(54, 55, 68);
-  color: azure;
-  border: #9feaea solid 1px;
-  border-radius: 15px;
-  transition: background-color 0.7s, color 0.7s;
+.button-lt {
+    background-color: var(--global-lt-button-backgound-color);
+    color: var(--global-lt-text-color);
+    border: var(--global-lt-border);
 }
 
-button:hover {
-  background-color: #65cebb;
-  color: black;
+.button-dt:hover {
+    background-color: var(--global-dt-button-active-background-color);
+    color: var(--global-dt-button-active-text-color);
 }
 
-.button-active {
-  background-color: #65cebb;
-  color: black;
+.button-dt-active {
+    background-color: var(--global-dt-button-active-background-color);
+    color: var(--global-dt-button-active-text-color);
+}
+
+.button-lt:hover {
+    background-color: var(--global-lt-button-active-background-color);
+    color: var(--global-lt-button-active-text-color);
+}
+
+.button-lt-active {
+    background-color: var(--global-lt-button-active-background-color);
+    color: var(--global-lt-button-active-text-color);
 }

@@ -1,8 +1,17 @@
 .fetch-app {
-  background-color: #4e4e5a;
   padding: 20px;
   border-radius: 40px;
   font-size: 20pt;
+}
+
+.fetch-app-lt {
+  background-color: var(--global-lt-backgound-color);
+  color: var(--global-lt-text-color);
+}
+
+.fetch-app-dt {
+  background-color: #4e4e5a;
+  color: azure;
 }
 
 .sf-list-and-card {
@@ -12,35 +21,66 @@
 
 .sf-title {
   font-size: 50px;
-  color: white;
   text-align: center;
   margin-bottom: 20px;
-  text-shadow: 0 0 25px #9feaea;
+
   transition: transform 0.5s linear, text-shadow 1s;
   transform: scale(1);
   cursor: pointer;
 }
 
-.sf-title:hover {
+.sf-title-dt {
+  color: azure;
+  text-shadow: 0 0 25px #9feaea;
+}
+
+.sf-title-lt {
+  color: #5d563c;
+  text-shadow: 0 0 25px #80713c;
+}
+
+.sf-title-dt:hover {
   text-shadow: 0 0 25px #00d9ff;
   z-index: 1;
   transform: scale(1.05);
 }
 
+.sf-title-lt:hover {
+  text-shadow: 0 0 25px #ffdd00;
+  z-index: 1;
+  transform: scale(1.05);
+}
 .item-card {
+  position: sticky;
   border-radius: 30px;
-  background-color: rgb(54, 55, 68);
   display: flex;
   flex-direction: column;
   color: aliceblue;
   width: 80%;
   height: auto;
-  border: #9feaea solid;
   animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
 }
 
-.error-div {
+.item-card-lt {
+  border: var(--global-lt-border);
+  background-color: var(--global-lt-button-backgound-color);
+  color: var(--global-lt-text-color);
+}
+
+.item-card-dt {
+  border: var(--global-dt-border);
+  background-color: var(--global-dt-button-backgound-color);
+}
+
+.error-div-dt {
   color: #9feaea;
+  animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
+  z-index: 1;
+  margin-top: 10px;
+}
+
+.error-div-lt {
+  color: #b60e0e;
   animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
   z-index: 1;
   margin-top: 10px;
@@ -76,32 +116,8 @@
   margin-bottom: 30px;
 }
 
-.sf-list {
-  font-size: 25px;
-  display: flex;
-  flex-direction: column;
-  color: white;
-}
-
-.sf-list,
-.sf-list div {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  transition: background-color 0.2s;
-}
-
-.sf-list div:hover {
-  background-color: #737377;
-}
-
-.sf-list div {
-  /*border-top: black solid 2px;*/
-  /*border: black solid 1px;*/
-  padding: 10px;
-}
 .sf-list-outer {
   width: 50%;
-  /*display: flex;*/
-  /*justify-content: center;*/
 }
 
 .sf-card-outer {
@@ -110,6 +126,27 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.sf-list {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.sf-list div {
+  padding: 10px;
+  transition: background-color 0.7s;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.sf-list-lt div:hover {
+  background-color: #d3ad68;
+}
+
+.sf-list-dt div:hover {
+  background-color: #737377;
 }
 
 button {
@@ -143,6 +180,15 @@ button {
   justify-content: center;
 }
 
-.li-el-active {
+.li-el-active-dt {
   background-color: rgb(39, 40, 47) !important;
+}
+
+.li-el-active-lt {
+  background-color: #947945 !important;
+}
+
+.button-context {
+  width: 200px;
+  font-size: 15px;
 }
