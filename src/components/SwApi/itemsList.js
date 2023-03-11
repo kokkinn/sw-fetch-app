@@ -7,14 +7,15 @@ export function ItemsList({
   apiError,
   reff,
 }) {
-  const theme = useContext(LanguageAndThemeContext).theme.name;
   const language = useContext(LanguageAndThemeContext).language.name;
   let filteredArray = [];
   const curRefId = reff.current != null && true ? reff.current.id : false;
   for (let item of apiItemsListJson) {
     filteredArray.push(
       <div
-        className={curRefId === item.uuid ? `li-el-active-${theme}` : null}
+        className={`sf-list-el ${
+          curRefId === item.uuid ? `sf-list-el-active` : null
+        }`}
         onClick={(event) => listItemClickHandler(event, item.uuid)}
         key={item.uuid}
         id={item.uuid}
@@ -26,8 +27,8 @@ export function ItemsList({
 
   return (
     <div className="sf-list-outer">
-      <div className={`sf-list sf-list-${theme}`}>{filteredArray}</div>
-      <div className={`error-div-${theme}`}>
+      <div className={`sf-list`}>{filteredArray}</div>
+      <div className="error-div">
         {apiError
           ? `${
               language === "eng"

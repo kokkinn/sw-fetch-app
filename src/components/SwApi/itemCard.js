@@ -3,9 +3,8 @@ import { LanguageAndThemeContext } from "./contexts/languageAndThemeContext";
 
 export function ItemCardFactory({ type, data, refCardDom }) {
   const EMPTY_DATA = "---";
-  const theme = useContext(LanguageAndThemeContext).theme.name;
   const language = useContext(LanguageAndThemeContext).language.name;
-  const commonClassname = `item-card item-card-${theme}`;
+  const commonClassname = `item-card`;
 
   switch (type) {
     case "people": {

@@ -5,8 +5,10 @@ import { ItemCardFactory } from "./itemCard";
 import "./swApiInterface.css";
 import { getData } from "./utils/api";
 import { LanguageAndThemeContext } from "./contexts/languageAndThemeContext";
+import { PrevPageButton } from "../base/prevPageButton";
 
 function SwApiInterfaceApp() {
+
   const [showType, setShowType] = useState("people");
   const [apiItemsListJson, setApiItemsListJson] = useState([]);
   const [apiErrorBool, setApiErrorBool] = useState(false);
@@ -59,38 +61,44 @@ function SwApiInterfaceApp() {
   };
 
   return (
-    <div className={`fetch-app fetch-app-${langAndThemeObj.theme.name}`}>
-      <h1 className={`sf-title sf-title-${langAndThemeObj.theme.name}`}>
-        {langAndThemeObj.language.name === "eng"
-          ? "Star Wars API Interface"
-          : "АПІ Інтерфейс по Зоряним Війнам"}
-      </h1>
-      <TypeButtons clickHandler={typeButtonClickHandler} showType={showType} />
-      <div className="sf-list-and-card">
-        {apiItemsListJson.length > 0 ? (
-          <ItemsList
-            reff={refListCurItemDom}
-            apiItemsListJson={apiItemsListJson}
-            listItemClickHandler={listItemClickHandler}
-            apiError={apiErrorBool}
-          />
-        ) : null}
-        {apiItemsListJson.length > 0 ? (
-          <div className="sf-card-outer">
-            <ItemCardFactory
-              refCardDom={refCardDom}
-              type={showType}
-              data={curItem}
-              noList={apiItemsListJson.length === 0}
+    <div className="fetch-app-wrapper">
+      <div className="fetch-app">
+        <PrevPageButton />
+        <h1 className="sf-title">
+          {langAndThemeObj.language.name === "eng"
+            ? "Star Wars API Interface"
+            : "АПІ Інтерфейс по Зоряним Війнам"}
+        </h1>
+        <TypeButtons
+          clickHandler={typeButtonClickHandler}
+          showType={showType}
+        />
+        <div className="sf-list-and-card">
+          {apiItemsListJson.length > 0 ? (
+            <ItemsList
+              reff={refListCurItemDom}
+              apiItemsListJson={apiItemsListJson}
+              listItemClickHandler={listItemClickHandler}
+              apiError={apiErrorBool}
             />
+          ) : null}
+          {apiItemsListJson.length > 0 ? (
+            <div className="sf-card-outer">
+              <ItemCardFactory
+                refCardDom={refCardDom}
+                type={showType}
+                data={curItem}
+                noList={apiItemsListJson.length === 0}
+              />
+            </div>
+          ) : null}
+        </div>
+        {apiItemsListJson.length === 0 ? (
+          <div className="loader-outer">
+            <span className="loader"></span>
           </div>
         ) : null}
       </div>
-      {apiItemsListJson.length === 0 ? (
-        <div className="loader-outer">
-          <span className="loader"></span>
-        </div>
-      ) : null}
     </div>
   );
 }

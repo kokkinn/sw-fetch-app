@@ -1,30 +1,53 @@
 :root {
-    --global-font-size: 35px;
-    --global-dt-text-color: #f0ffffff;
-    --global-lt-text-color: #000000;
-    --global-lt-backgound-color: #F5DEB3FF;
-    --global-lt-button-backgound-color: #eed19a;
-    --global-dt-button-backgound-color: #363744ff;
-    --global-dt-button-active-background-color: #65cebb;
-    --global-lt-button-active-background-color: #46443e;
-    --global-lt-button-active-text-color: #dcd551;
-    --global-dt-button-active-text-color: #000000;
-    --global-dt-border: #9feaea solid 1px;
-    --global-lt-border: #d3ad68 solid 1px;
+  --global-font-size: 35px;
+  --global-button-font-size: 25px;
+  --global-main-text-color: unset;
+  --global-app-background: unset;
+  --global-button-background-color: unset;
+  --global-button-active-background-color: unset;
+  --global-button-active-text-color: unset;
+  --global-border-color: unset;
+  --global-title-color: unset;
+  --global-title-shadow: unset;
+  --global-title-hover-brightness: unset;
+  --global-items-list-active-el-background: unset;
+  --global-items-list-hover-el-background: unset;
+  --global-error-div-color: unset;
+  --global-global-background: unset;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    width: 100%;
-    font-size: var(--global-font-size);
-    padding: 20px;
-    background-color: rgb(39, 40, 47);
+  width: 100%;
+  height: 100%;
+  font-size: var(--global-font-size);
+  /*background-color: var(--global-global-background);*/
+  background: linear-gradient(
+    90deg,
+    var(--global-items-list-active-el-background),
+    var(--global-button-background-color)
+  );
+  color: var(--global-main-text-color);
+  animation: backGroundInfinite 7s ease-in-out infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes backGroundInfinite {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 
 /*input {*/
@@ -42,41 +65,34 @@ body {
 /*}*/
 
 .button {
-    height: 40px;
-    width: 150px;
-    font-size: calc(var(--global-font-size) - 10);
-    border-radius: 15px;
-    transition: background-color 0.7s, color 0.7s;
+  min-height: 40px;
+  height: auto;
+  width: 150px;
+  font-size: var(--global-button-font-size);
+  border-radius: 15px;
+  transition: background-color 0.7s, color 0.7s;
+  background-color: var(--global-button-background-color);
+  color: var(--global-main-text-color);
+  border: var(--global-border-color);
+  box-shadow: var(--global-app-background) 0 0 20px;
 }
 
-.button-dt {
-    background-color: var(--global-dt-button-backgound-color);
-    color: var(--global-dt-text-color);
-    border: var(--global-dt-border);
+.button:hover {
+  background-color: var(--global-button-active-background-color);
+  color: var(--global-button-active-text-color);
 }
 
-.button-lt {
-    background-color: var(--global-lt-button-backgound-color);
-    color: var(--global-lt-text-color);
-    border: var(--global-lt-border);
+.button-active {
+  background-color: var(--global-button-active-background-color);
+  color: var(--global-button-active-text-color);
 }
 
-.button-dt:hover {
-    background-color: var(--global-dt-button-active-background-color);
-    color: var(--global-dt-button-active-text-color);
+a {
+  text-decoration: none;
+  color: var(--global-main-text-color);
+  transition: color 0.5s;
 }
 
-.button-dt-active {
-    background-color: var(--global-dt-button-active-background-color);
-    color: var(--global-dt-button-active-text-color);
-}
-
-.button-lt:hover {
-    background-color: var(--global-lt-button-active-background-color);
-    color: var(--global-lt-button-active-text-color);
-}
-
-.button-lt-active {
-    background-color: var(--global-lt-button-active-background-color);
-    color: var(--global-lt-button-active-text-color);
+a:hover {
+  color: var(--global-error-div-color);
 }
