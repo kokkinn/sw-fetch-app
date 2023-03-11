@@ -1,195 +1,212 @@
 .fetch-app {
-  padding: 20px;
-  border-radius: 40px;
-  font-size: 20pt;
-  background-color: var(--global-app-background);
-  transition: background-color 0.7s;
-  color: var(--global-main-text-color);
-  display: block;
+    padding: 20px;
+    border-radius: 40px;
+    font-size: 20pt;
+    background-color: var(--global-app-background);
+    transition: background-color 0.7s;
+    color: var(--global-main-text-color);
+    display: block;
 }
 
 .fetch-app-wrapper {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding: 30px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
 }
+
 .sf-list-and-card {
-  display: flex;
-  gap: 20px;
-  width: auto;
+    display: flex;
+    gap: 20px;
+    width: auto;
 }
 
 .sf-title {
-  position: relative;
-  color: var(--global-title-color);
-  text-shadow: 0 0 30px var(--global-title-shadow);
-  font-size: 50px;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  transition: transform 0.5s linear, filter 1s, color 0.7s;
-  cursor: pointer;
+    white-space: nowrap;
+    font-size: clamp(40px, 8vw, 60px);
+    position: relative;
+    color: var(--global-title-color);
+    text-shadow: 0 0 30px var(--global-title-shadow);
+    /*font-size: 50px;*/
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    transition: transform 0.5s linear, filter 1s, color 0.7s;
+    cursor: pointer;
 }
 
 .sf-title:hover {
-  filter: brightness(var(--global-title-hover-brightness));
-  z-index: 1;
-  transform: scale(1.05);
+    filter: brightness(var(--global-title-hover-brightness));
+    z-index: 1;
+    transform: scale(1.05);
 }
 
 .item-card {
-  border-radius: 30px;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  height: auto;
-  animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
-  border: var(--global-border-color) solid 1px;
-  background-color: var(--global-button-background-color);
-  box-shadow: var(--global-border-color) 0 0 10px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
+    border: var(--global-border-color) solid 1px;
+    background-color: var(--global-button-background-color);
+    box-shadow: var(--global-border-color) 0 0 10px;
 }
 
 .error-div {
-  color: var(--global-error-div-color);
-  animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
-  z-index: 1;
-  /*margin-top: 10px;*/
+    color: var(--global-error-div-color);
+    animation: 0.5s ease-out 0s 1 keyFrameScaleUp;
+    z-index: 1;
+    /*margin-top: 10px;*/
 }
 
 @keyframes keyFrameScaleUp {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .item-card div {
-  padding: 25px;
+    padding: 25px;
 }
 
 .item-card div:not(:nth-child(1)) {
-  border-top: rgba(255, 255, 255, 0.32) solid 1px;
+    border-top: rgba(255, 255, 255, 0.32) solid 1px;
 }
 
 .item-card-large-text {
-  font-size: 45px;
+    font-size: 45px;
 }
+
 .item-card-regular-text {
-  font-size: 22px;
+    font-size: 22px;
 }
 
 .sf-type-buttons {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
 }
 
 .sf-list-outer {
-  width: 50%;
+    width: 50%;
 }
 
 .sf-card-outer {
-  width: 50%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sf-list {
-  font-size: 25px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--global-border-color);
-  box-shadow: var(--global-items-list-active-el-background) 0 0 20px;
-  margin-bottom: 10px;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--global-border-color);
+    box-shadow: var(--global-items-list-active-el-background) 0 0 20px;
+    margin-bottom: 10px;
 }
 
 .sf-list-el {
-  width: auto;
-  padding: 10px;
-  transition: background-color 0.3s;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+    width: auto;
+    padding: 10px;
+    transition: background-color 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .sf-list-el-active {
-  background-color: var(--global-items-list-active-el-background) !important;
+    background-color: var(--global-items-list-active-el-background) !important;
 }
+
 .sf-list-el:hover {
-  background-color: var(--global-items-list-hover-el-background);
+    background-color: var(--global-items-list-hover-el-background);
 }
 
 button {
-  font-size: 25px;
-  height: 40px;
-  width: 170px;
+    font-size: 25px;
+    height: 40px;
+    width: 170px;
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 5px solid #fff;
-  border-bottom-color: #ff3d00;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #fff;
+    border-bottom-color: #ff3d00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .loader-outer {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .button-context {
-  width: 200px;
+    width: 200px;
 }
 
-@media only screen and (max-width: 600px) {
-  .sf-list-and-card {
-    flex-direction: column;
-    align-items: center;
-  }
+/*@media all and (max-width: 1100px) {*/
+/*    .sf-title {*/
+/*        font-size: clamp(40px, 6vw, 100px);*/
+/*    }*/
+/*}*/
 
-  .item-card {
-    width: 100%;
+/*@media all and (max-width: 800px) {*/
+/*    .sf-title {*/
+/*        font-size: clamp(40px, 11.5vw, 100px);*/
+/*    }*/
+/*}*/
 
-  }
+@media only screen and (max-width: 800px) {
+    .sf-list-and-card {
+        flex-direction: column;
+        align-items: center;
+    }
 
-  .sf-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+    .item-card {
+        width: 100%;
 
-  .sf-card-outer {
-    width: 100%;
-  }
+    }
 
-  .sf-list-el {
-    width: auto;
-  }
+    .sf-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 
-  .sf-list-outer {
-    width: 100%;
-  }
+    .sf-card-outer {
+        width: 100%;
+    }
 
-  .fetch-app {
-    margin: 20px 0;
-  }
+    .sf-list-el {
+        width: auto;
+    }
 
-  .fetch-app-wrapper{
-    padding: 10px;
-  }
+    .sf-list-outer {
+        width: 100%;
+    }
+
+    .fetch-app {
+        margin: 20px 0;
+    }
+
+    .fetch-app-wrapper {
+        padding: 10px;
+    }
 }

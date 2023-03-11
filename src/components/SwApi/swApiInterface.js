@@ -64,7 +64,7 @@ function SwApiInterfaceApp() {
     <div className="fetch-app-wrapper">
       <div className="fetch-app">
         <PrevPageButton />
-        <h1 className="sf-title">
+        <h1 className="sf-title" style={{whiteSpace:"normal"}}>
           {langAndThemeObj.language.name === "eng"
             ? "Star Wars API Interface"
             : "АПІ Інтерфейс по Зоряним Війнам"}

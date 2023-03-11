@@ -20,7 +20,7 @@ export function Navbar() {
           props.language.setter(LANGUAGES[props.language.name]["switchTo"])
         }
       >
-        {props.language.name === "eng" ? "Switch language" : "Переключити мову"}{" "}
+        {props.language.name === "eng" ? "Switch language" : "Змінити мову"}{" "}
       </button>
       <button
         className={`button button-${props.theme.name} button-context`}

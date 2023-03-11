@@ -4,6 +4,7 @@ import { PrevPageButton } from "../prevPageButton";
 export function LoginRequire() {
   let navigate = useNavigate();
   return (
+    <div className="page-form-wrapper">
     <div className="page-form">
       <h3 className="error-div">You should login to visit this page</h3>
       <button
@@ -15,6 +16,7 @@ export function LoginRequire() {
         Login
       </button>
       <PrevPageButton />
+    </div>
     </div>
   );
 }

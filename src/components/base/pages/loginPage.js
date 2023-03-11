@@ -6,7 +6,7 @@ import "./pagesStyles.css";
 export function LoginPage() {
   const loggedIN = useContext(AuthContext);
   return (
-    <div>
+    <div className='page-form-wrapper'>
       <div className="page-form">
         <h1 style={{ marginTop: 0 }} className="sf-title title-pages">
           This is login page
