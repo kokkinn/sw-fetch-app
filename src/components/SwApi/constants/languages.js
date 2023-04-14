@@ -1,10 +1,10 @@
 export const LANGUAGES = {
   ukr: {
-    name: 'urk',
+    name: "urk",
     switchTo: "eng",
   },
   eng: {
-    name:'lt',
+    name: "lt",
     switchTo: "ukr",
   },
-}
+};
