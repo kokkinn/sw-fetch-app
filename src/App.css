@@ -1,3 +1,21 @@
+:root {
+  --global-font-size: 35px;
+  --global-button-font-size: 25px;
+  --global-main-text-color: unset;
+  --global-app-background: unset;
+  --global-button-background-color: unset;
+  --global-button-active-background-color: unset;
+  --global-button-active-text-color: unset;
+  --global-border-color: unset;
+  --global-title-color: unset;
+  --global-title-shadow: unset;
+  --global-title-hover-brightness: unset;
+  --global-items-list-active-el-background: unset;
+  --global-items-list-hover-el-background: unset;
+  --global-error-div-color: unset;
+  --global-global-background: unset;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,42 +25,74 @@
 html,
 body {
   width: 100%;
-  font-size: 35px;
-  padding: 20px;
-  background-color: rgb(39, 40, 47);
+  height: 100%;
+  font-size: var(--global-font-size);
+  /*background-color: var(--global-global-background);*/
+  background: linear-gradient(
+    90deg,
+    var(--global-items-list-active-el-background),
+    var(--global-button-background-color)
+  );
+  color: var(--global-main-text-color);
+  animation: backGroundInfinite 7s ease-in-out infinite;
+  background-size: 400% 400%;
 }
 
-input {
-  height: 30px;
+@keyframes backGroundInfinite {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/*input {*/
+/*    height: 30px;*/
+/*    width: 150px;*/
+/*    font-size: calc(var(--global-font-size) - 15);*/
+/*    background-color: azure;*/
+/*    border: #9feaea solid 1px;*/
+/*    transition: background-color 0.9s, color 0.9s;*/
+/*}*/
+
+/*input:hover {*/
+/*    background-color: white;*/
+/*    color: #65cebb;*/
+/*}*/
+
+.button {
+  min-height: 40px;
+  height: auto;
   width: 150px;
-  font-size: 20px;
-  background-color: azure;
-  border: #9feaea solid 1px;
-  transition: background-color 0.9s, color 0.9s;
-}
-
-input:hover {
-  background-color: white;
-  color: #65cebb;
-}
-
-button {
-  height: 30px;
-  width: 150px;
-  font-size: 20px;
-  background-color: rgb(54, 55, 68);
-  color: azure;
-  border: #9feaea solid 1px;
+  font-size: var(--global-button-font-size);
   border-radius: 15px;
   transition: background-color 0.7s, color 0.7s;
+  background-color: var(--global-button-background-color);
+  color: var(--global-main-text-color);
+  border: var(--global-border-color);
+  box-shadow: var(--global-app-background) 0 0 20px;
 }
 
-button:hover {
-  background-color: #65cebb;
-  color: black;
+.button:hover {
+  background-color: var(--global-button-active-background-color);
+  color: var(--global-button-active-text-color);
 }
 
 .button-active {
-  background-color: #65cebb;
-  color: black;
+  background-color: var(--global-button-active-background-color);
+  color: var(--global-button-active-text-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--global-main-text-color);
+  transition: color 0.5s;
+}
+
+a:hover {
+  color: var(--global-error-div-color);
 }
